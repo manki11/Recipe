@@ -4,16 +4,24 @@
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input id="name" type="text" class="form-control" name="name" ngModel>
+          <input id="name" type="text" class="form-control" name="name" ngModel required>
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input id="amount" type="number" name="amount" ngModel class="form-control">
+          <input
+            id="amount"
+            type="number"
+            name="amount"
+            ngModel
+            class="form-control"
+            required
+            pattern="^[1-9]+[0-9]*$"
+          >
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success">Add Item</button>
+          <button class="btn btn-success" [disabled]="!f.valid">Add Item</button>
           <button class="btn btn-danger">Delete Item</button>
           <button class="btn btn-primary">Clear Form</button>
         </div>
