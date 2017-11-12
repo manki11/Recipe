@@ -16,7 +16,6 @@
               formControlName="name"
               type="text"
               class="form-control"
-              required
             >
           </div>
         </div>
@@ -30,7 +29,6 @@
               id="imagePath"
               formControlName="imagePath"
               type="url"
-              required
               class="form-control"
             >
           </div>
@@ -52,7 +50,6 @@
               formControlName="description"
               type="text"
               class="form-control"
-              required
               rows="6"
               cols="10"
             ></textarea>
@@ -60,24 +57,39 @@
         </div>
       </div>
 
+      <label>Ingredients:</label>
+
       <div class="row">
-        <div class="col-md-12">
-          <div class="row">
+        <div class="col-md-12" formArrayName="ingredients">
+          <div class="row"
+               *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i=index"
+               [formGroupName]="i"
+               style="margin-top: 10px"
+          >
             <div class="col-md-8">
-              <input type="text" class="form-control">
+              <input type="text"
+                     class="form-control"
+                     formControlName="name"
+              >
             </div>
             <div class="col-md-2">
-              <input type="number" class="form-control">
+              <input type="number"
+                     class="form-control"
+                     formControlName="amount"
+              >
             </div>
             <div class="col-md-2">
               <button class="btn btn-danger" type="button">X</button>
             </div>
           </div>
+          <br/>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-success" type="button" (click)="onAddIngredient()">Add Ingredients</button>
+            </div>
+          </div>
         </div>
       </div>
-
-
-
     </form>
   </div>
 </div>
