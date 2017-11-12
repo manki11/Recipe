@@ -44,17 +44,17 @@ export class RecipeService {
 
   updateRecipeById(id: number, newRecipe: Recipe) {
     this.recipes[id] = newRecipe;
-    this.recipesChanged.next(this.recipes);
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   addNewRecipe(newRecipe: Recipe) {
     this.recipes.push(newRecipe);
-    this.recipesChanged.next(this.recipes);
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   deleteRecipe(id: number) {
     this.recipes.splice(id, 1);
-    this.recipesChanged.next(this.recipes);
+    this.recipesChanged.next(this.recipes.slice());
   }
 
 }
