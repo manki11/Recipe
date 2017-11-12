@@ -2,11 +2,14 @@ import {Recipe} from "./recipes.model";
 import {Injectable} from "@angular/core";
 import {Ingredient} from "../shared/ingredient.model";
 import {ShoppingService} from "../shopping-list/shopping.service";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class RecipeService {
+  recipesChanged= new Subject<Recipe[]>();
 
-  constructor(private shoppingService: ShoppingService){}
+  constructor(private shoppingService: ShoppingService) {
+  }
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -15,14 +18,14 @@ export class RecipeService {
       'http://www.greatamericancookies.com/app/themes/greatamericancookies/library/images/home/carousel1.png',
       [
         new Ingredient('bread', 5),
-        new Ingredient('choco',10)
+        new Ingredient('choco', 10)
       ]),
     new Recipe(
       'How to make a pizza',
       'Pizza is a yeasted flatbread typically topped with tomato sauce and cheese and baked in an oven. It is commonly topped with a selection of meats, vegetables and condiments.',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/440px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
       [
-        new Ingredient('pizza bread',2),
+        new Ingredient('pizza bread', 2),
         new Ingredient('cheeze', 10)
       ])
   ];
@@ -37,6 +40,21 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingService.addIngredients(ingredients);
+  }
+
+  updateRecipeById(id: number, newRecipe: Recipe) {
+    this.recipes[id] = newRecipe;
+    this.recipesChanged.next(this.recipes);
+  }
+
+  addNewRecipe(newRecipe: Recipe) {
+    this.recipes.push(newRecipe);
+    this.recipesChanged.next(this.recipes);
+  }
+
+  deleteRecipe(id: number) {
+    this.recipes.splice(id, 1);
+    this.recipesChanged.next(this.recipes);
   }
 
 }
