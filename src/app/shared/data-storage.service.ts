@@ -6,6 +6,7 @@ declare function require(name: string);
 const secret = require('../../assets/secret.json');
 import 'rxjs/Rx';
 import {RecipeService} from "../recipes/recipe.service";
+import {Recipe} from "../recipes/recipes.model";
 
 @Injectable()
 export class DataStorageService {
@@ -27,7 +28,12 @@ export class DataStorageService {
     return this.http.get(secret.firebaseURL)
       .map(
         (response) => {
-          const data = response.json();
+          const data: Recipe[] = response.json();
+          for (let recipe of data) {
+            if (!recipe['ingredients']) {
+              recipe['ingredients'] = [];
+            }
+          }
           this.recipeService.updateRecipesfromDB(data);
           return data;
         }

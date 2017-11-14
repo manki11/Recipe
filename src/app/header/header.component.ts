@@ -26,7 +26,7 @@ export class HeaderComponent {
 
   onFetch() {
     this.dataStorage.getRecipes().subscribe(
-      (response) =>{
+      (response) => {
         console.log(response);
       }
     );
