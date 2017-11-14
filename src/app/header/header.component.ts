@@ -10,20 +10,26 @@ import {Recipe} from "../recipes/recipes.model";
 export class HeaderComponent {
   @Output() featureSelected = new EventEmitter<string>();
 
-  constructor(private dataStorage: DataStorageService, private recipeService: RecipeService) {
+  constructor(private dataStorage: DataStorageService) {
   }
 
-  recipes: Recipe[];
 
   onSave() {
-    this.recipes = this.recipeService.getRecipes();
 
-    this.dataStorage.saveRecipes(this.recipes)
+    this.dataStorage.saveRecipes()
       .subscribe(
         (response) => {
-          console.log('Recipes Stored'+ response);
+          console.log(response);
         }
       );
+  }
+
+  onFetch() {
+    this.dataStorage.getRecipes().subscribe(
+      (response) =>{
+        console.log(response);
+      }
+    );
   }
 
 }
