@@ -1,7 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {DataStorageService} from "../shared/data-storage.service";
-import {RecipeService} from "../recipes/recipe.service";
-import {Recipe} from "../recipes/recipes.model";
 
 @Component({
   selector: 'app-header',
