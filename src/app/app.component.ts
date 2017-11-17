@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as firebase from 'firebase';
 
+declare function require(name: string);
 const secret = require('../assets/secret.json');
 
 @Component({
