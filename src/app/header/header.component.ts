@@ -23,6 +23,10 @@ export class HeaderComponent {
       );
   }
 
+  onLogout() {
+    this.authService.logOut();
+  }
+
   onFetch() {
     this.dataStorage.getRecipes().subscribe(
       (response) => {
