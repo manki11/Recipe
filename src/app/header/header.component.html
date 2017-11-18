@@ -11,9 +11,11 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/signup">Signup</a></li>
-        <li><a routerLink="/signin">Signin</a></li>
-        <li class="dropdown" appDropdown>
+        <ng-template [ngIf]="!authService.isAuthenticated()">
+          <li><a routerLink="/signup">Signup</a></li>
+          <li><a routerLink="/signin">Signin</a></li>
+        </ng-template>
+        <li class="dropdown" appDropdown *ngIf="authService.isAuthenticated()">
           <a class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a style="cursor:pointer;" (click)="onSave()">Save Data</a></li>

@@ -7,15 +7,18 @@ const secret = require('../../assets/secret.json');
 import 'rxjs/Rx';
 import {RecipeService} from "../recipes/recipe.service";
 import {Recipe} from "../recipes/recipes.model";
+import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class DataStorageService {
-  constructor(private http: Http, private recipeService: RecipeService) {
+  constructor(private http: Http, private recipeService: RecipeService, private authService: AuthService) {
   }
 
   saveRecipes() {
+    const token = this.authService.getToken();
+
     const recipes = this.recipeService.getRecipes();
-    return this.http.put(secret.firebaseURL, recipes)
+    return this.http.put(secret.firebaseURL + '?auth=' + token, recipes)
       .map(
         (response) => {
           const data = response;
@@ -25,7 +28,9 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    return this.http.get(secret.firebaseURL)
+    const token = this.authService.getToken();
+
+    return this.http.get(secret.firebaseURL + '?auth=' + token)
       .map(
         (response) => {
           const data: Recipe[] = response.json();
