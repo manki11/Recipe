@@ -10,14 +10,6 @@ import {SigninComponent} from "./auth/signin/signin.component";
 import {AuthGaurdService} from "./auth/auth-gaurd.service";
 
 const routes: Routes = [
-  {
-    path: 'recipes', component: RecipesComponent, children: [
-    {path: '', component: RecipeStartComponent},
-    {path: 'new', component: RecipeEditComponent, canActivate: [AuthGaurdService]},
-    {path: ':id', component: RecipeDetailComponent},
-    {path: ':id/edit', component: RecipeEditComponent, canActivate: [AuthGaurdService]}
-  ]
-  },
   {path: 'shopping-list', component: ShoppingListComponent},
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'signup', component: SignupComponent},
