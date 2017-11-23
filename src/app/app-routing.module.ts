@@ -11,10 +11,7 @@ import {AuthGaurdService} from "./auth/auth-gaurd.service";
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent}
-
-]
+];
 
 @NgModule({
   imports: [
