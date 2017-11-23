@@ -5,18 +5,18 @@ A simple recipe book app built using AngularJS. It stores recipes of user and hi
 ### ScreenShots of App
 
 <p align="center">
-<img src="screenshots/recipe-main.png" height = "250" width="400">
-<img src="screenshots/recipe-recipes.png" height = "250" width="400">
+<img src="screenshots/recipe-main.png" height = "250" width="400" border="2">&nbsp&nbsp
+<img src="screenshots/recipe-recipes.png" height = "250" width="400" border="2">
 </p>
 <br/><br/>
 <p align="center">
-<img src="screenshots/recipe-edit.png" height = "250" width="400">
-<img src="screenshots/recipe-new.png" height = "250" width="400"><br/>
+<img src="screenshots/recipe-edit.png" height = "250" width="400" border="2">&nbsp&nbsp
+<img src="screenshots/recipe-new.png" height = "250" width="400" border="2">
 </p>
 <br/><br/>
 <p align="center">
-<img src="screenshots/recipe-login.png" height = "250" width="400">
-<img src="screenshots/recipe-shopping.png" height = "250" width="400"><br/>
+<img src="screenshots/recipe-login.png" height = "250" width="400" border="2">&nbsp&nbsp
+<img src="screenshots/recipe-shopping.png" height = "250" width="400" border="2">
 </p>
 <br/>
 <br/>
@@ -30,6 +30,9 @@ To download all dependencies run:
 ```bash
 npm install --dev
 ```
+
+#### To use firebase (Auth and DB)
+Make an app in firebase console and put the details of the app in secret.json(you have to make your own) based on secret-demo.json in the assests folder.
 
 
 #### Run on Development server
