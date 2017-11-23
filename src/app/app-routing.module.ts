@@ -10,7 +10,6 @@ import {SigninComponent} from "./auth/signin/signin.component";
 import {AuthGaurdService} from "./auth/auth-gaurd.service";
 
 const routes: Routes = [
-  {path: 'shopping-list', component: ShoppingListComponent},
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent}

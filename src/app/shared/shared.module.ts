@@ -1,14 +1,17 @@
 import {NgModule} from "@angular/core";
 import {DropDownDirective} from "./dropdown.directive";
 import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations:[
+  declarations: [
     DropDownDirective
   ],
-  exports:[
+  exports: [
     DropDownDirective,
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
-export class SharedModule{}
+export class SharedModule {
+}
